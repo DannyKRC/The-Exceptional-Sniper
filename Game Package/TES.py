@@ -4,7 +4,6 @@ import tkinter.font as tkFont
 from PIL import ImageTk
 import random
 import pygame
-import tkmacosx as tkm
 
 pygame.mixer.init()
 reload_sound = pygame.mixer.Sound("reload.wav")
@@ -776,8 +775,6 @@ class two_player(tk.Frame):
         self.t1[0][0].focus_set()
         self.t1[0][0].bind("<Key>", self.keys)
         
-        #print(self.t2[6][0].cget("image"))
-        
         #set team1 code
         j = 0
         random.shuffle(t1_code)
@@ -801,9 +798,6 @@ class two_player(tk.Frame):
                 
             else:
                 self.t2[i][1].configure(text = empty)
-        
-        #print(in_t1)
-        #print(in_t2)
         
         if virus == True:
             self.after(2000, self.virus)
@@ -852,9 +846,6 @@ class two_player(tk.Frame):
             else:
                 self.t2[i][1].configure(text = empty)
         
-        #print(in_t1)
-        #print(in_t2)
-        
         if stopvirus == True:
             stopvirus = False
             return
@@ -868,7 +859,6 @@ class two_player(tk.Frame):
     def keys(self,event):
         global t1_people, t2_people, t1_code, t2_code, in_t1, in_t2
         self.play = shoot_sound2.play()
-        #print(event.char)
         
         # t1 get shot
         find_empty_space = 0
@@ -902,10 +892,7 @@ class two_player(tk.Frame):
                     
             elif event.char not in in_t1:
                 check = 0
-                #print("hi")
                 for i in range(8):
-                    #print("yo")
-                    #print(self.t2[i][0].cget("image"))
                     if self.t2[i][0].cget("image") == t2man_pic and check == 0:
                         self.play1 = yell_sound2.play()
                         self.t2[i][0].configure(image = self.tomb_pic) # team2 dead
@@ -959,10 +946,8 @@ class two_player(tk.Frame):
                         
 
             elif event.char not in in_t2:
-                #print("hi")
                 check = 0
                 for i in range(8):
-                    #print("yo")
                     if self.t1[i][0].cget("image") == t1man_pic and check == 0:
                         self.play1 = yell_sound2.play()
                         self.t1[i][0].configure(image = self.tomb_pic) # team1 dead
